@@ -1,71 +1,87 @@
 # powerBoost Study
 ## 이화여대 파워부스트 스터디
 
-API Endpoints
+### API Endpoints
 
+#### 1. User Registration
+회원가입 기능을 제공합니다.
 
-1. User Registration
-Endpoint: /register
-Method: POST
-Request Body:
+- **Endpoint**: `/register`
+- **Method**: `POST`
+- **Request Body**:
+  ```json
+  {
+    "username": "username",
+    "password": "password",
+    "nickname": "nickname"
+  }
+- **Response**: 201 Created
+
+#### 2. User Login
+로그인 기능을 제공합니다.
+
+- **Endpoint**: `/login`
+- **Method**: `POST`
+- **Request Body**:
+```json
 {
-  "username": "your_username",
-  "password": "your_password",
-  "nickname": "your_nickname"
+  "username": "username",
+  "password": "password"
 }
-Response: 201 Created
-
-2. User Login
-Endpoint: /login
-Method: POST
-Request Body:
-{
-  "username": "your_username",
-  "password": "your_password"
-}
-Response:
+```
+- **Response**:
+```json
 {
   "auth": true,
-  "token": "your_jwt_token"
+  "token": "jwt_token"
 }
+```
+#### 3. User Logout
+로그아웃 기능을 제공합니다. 클라이언트 측에서 토큰을 삭제하여 로그아웃합니다.
 
+- **Method**: `클라이언트 측에서 JWT 토큰 삭제`
+#### 4. Create a Post
+글 작성 기능을 제공합니다.
 
-3. Create a Post
-Endpoint: /posts
-Method: POST
-Headers:
-x-access-token: your_jwt_token
-Request Body:
+- **Endpoint**: `/posts`
+- **Method**: `POST`
+- **Headers**: `x-access-token`: `jwt_token`
+- **Request Body**:
+```json
 {
   "title": "Post Title",
   "content": "Post Content"
 }
-Response: 201 Created
+```
+- **Response**: 201 Created
+#### 5. Update a Post
+글 수정 기능을 제공합니다.
 
-
-4. Update a Post
-Endpoint: /posts/:id
-Method: PUT
-Headers:
-x-access-token: your_jwt_token
-Request Body:
+- **Endpoint**: `/posts/:id`
+- **Method**: `PUT`
+- **Headers**: `x-access-token`: `jwt_token`
+- **Request Body**:
+```json
 {
   "title": "Updated Title",
   "content": "Updated Content"
 }
-Response: 200 OK
+```
+- **Response**: 200 OK
+#### 6. Delete a Post
+글 삭제 기능을 제공합니다.
 
-5. Delete a Post
-Endpoint: /posts/:id
-Method: DELETE
-Headers:
-x-access-token: your_jwt_token
-Response: 200 OK
+- **Endpoint**: `/posts/:id`
+- **Method**: `DELETE`
+- **Headers**: `x-access-token`: `jwt_token`
+- **Response**: 200 OK
+#### 7. Get All Posts
+모든 게시글을 조회하는 기능을 제공합니다.
 
-6. Get All Posts
-Endpoint: /posts
-Method: GET
-Response:
+- **Endpoint**: `/posts`
+- **Method**: `GET`
+- **Response**:
+```json
 [
   {
     "id": 1,
@@ -75,11 +91,14 @@ Response:
     "likes": 0
   }
 ]
+```
+#### 8. Get a Post
+특정 게시글을 조회하는 기능을 제공합니다.
 
-7. Get a Post
-Endpoint: /posts/:id
-Method: GET
-Response:
+- **Endpoint**: `/posts/:id`
+- **Method**: `GET`
+- **Response**:
+```json
 {
   "id": 1,
   "user_id": 1,
@@ -87,29 +106,34 @@ Response:
   "content": "Post Content",
   "likes": 0
 }
+```
+#### 9. Like a Post
+게시글에 좋아요를 추가하는 기능을 제공합니다.
 
-8. Like a Post
-Endpoint: /posts/:id/like
-Method: POST
-Headers:
-x-access-token: your_jwt_token
-Response: 200 OK
+- **Endpoint**: `/posts/:id/like`
+- **Method**: `POST`
+- **Headers**: `x-access-token`: `jwt_token`
+- **Response**: 200 OK
+#### 10. Add a Comment
+댓글 작성 기능을 제공합니다.
 
-9. Add a Comment
-Endpoint: /posts/:postId/comments
-Method: POST
-Headers:
-x-access-token: your_jwt_token
-Request Body:
+- **Endpoint**: `/posts/:postId/comments`
+- **Method**: `POST`
+- **Headers**: `x-access-token`: `jwt_token`
+- **Request Body**:
+```json
 {
   "content": "Comment Content"
 }
-Response: 201 Created
+```
+- **Response**: 201 Created
+#### 11. Get Comments for a Post
+특정 게시글의 댓글을 조회하는 기능을 제공합니다.
 
-10. Get Comments for a Post
-Endpoint: /posts/:postId/comments
-Method: GET
-Response:
+- **Endpoint**: `/posts/:postId/comments`
+- **Method**: `GET`
+- **Response**:
+```json
 [
   {
     "id": 1,
@@ -118,3 +142,4 @@ Response:
     "content": "Comment Content"
   }
 ]
+```
