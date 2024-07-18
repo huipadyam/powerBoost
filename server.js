@@ -1,8 +1,13 @@
 const express = require('express');  // Express 모듈을 가져와서 express 변수에 할당
+// import express from 'express'; : commonJS module 문법보다 ES 모듈 문법으로 통일해서 쓰는게 좋음
 const bodyParser = require('body-parser');  // body-parser 모듈을 가져와서 bodyParser 변수에 할당
+// import bodyParser from 'body-parser';
 const mysql = require('mysql2');  // MySQL 모듈을 가져와서 mysql 변수에 할당
+// import mysql from 'mysql2';
 const bcrypt = require('bcryptjs');  // bcrypt 모듈을 가져와서 bcrypt 변수에 할당
+// import bcrypt from 'bcryptjs';
 const jwt = require('jsonwebtoken');  // jsonwebtoken 모듈을 가져와서 jwt 변수에 할당
+// import jwt from 'jsonwebtoken';
 
 const app = express();  // Express 애플리케이션 인스턴스를 생성하여 app 변수에 할당
 const PORT = 3000;  // 서버가 실행될 포트를 3000으로 설정
