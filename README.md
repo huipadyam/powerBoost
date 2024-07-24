@@ -33,11 +33,27 @@
 ```json
 {
   "auth": true,
-  "token": "jwt_token"
+  "token": "jwt_token",
+  "refreshToken": "refresh_jwt_token" // 3주차 추가
 }
 ```
-#### 3. User Logout
-로그아웃 기능을 제공합니다. 클라이언트 측에서 토큰을 삭제하여 로그아웃합니다.
+#### 3. Token Refresh // 3주차 추가
+리프레시 토큰을 사용하여 새로운 액세스 토큰을 발급받는 기능을 제공합니다.
+
+- **Endpoint**: `/token`
+- **Method**: `POST`
+- **Request Body**:
+```json
+{
+  "refreshToken": "refresh_jwt_token"
+}
+```
+- **Response**:
+```json
+{
+  "token": "new_jwt_token"
+}
+```
 
 - **Method**: `클라이언트 측에서 JWT 토큰 삭제`
 #### 4. Create a Post
@@ -139,10 +155,37 @@
     "id": 1,
     "post_id": 1,
     "user_id": 1,
-    "content": "Comment Content"
+    "content": "Comment Content", 
+    "userNick": "nickname" // 3주차 추가
   }
 ]
 ```
+#### 12. Scrap a Post // 3주차 추가
+게시글을 스크랩하는 기능을 제공합니다.
+
+- **Endpoint**: `/posts/:id/scrap`
+- **Method**: `POST`
+- **Headers**: `x-access-token`: `jwt_token`
+- **Response**: 200 OK
+
+#### 13. Search Posts
+게시물을 검색하는 기능을 제공합니다.
+
+- **Endpoint**: `/search`
+- **Method**: `GET`
+- **Query Parameters**: `query`: 검색어
+- **Response**:
+```json
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "title": "Post Title",
+    "content": "Post Content",
+    "likes": 0
+  }
+]
+
 ### 알게 된 점
 #### 1. 비밀번호 해싱
 db 저장 전에 bcrypt로 해싱
