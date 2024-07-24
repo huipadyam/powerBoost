@@ -176,7 +176,7 @@
 - **Headers**: `x-access-token`: `jwt_token`
 - **Response**: 200 OK
 
-#### 14. Get Scrapped Posts
+#### 14. Get Scrapped Posts // 3주차 추가
 스크랩한 게시글들을 조회하는 기능을 제공합니다.
 
 - **Endpoint**: `/scraps`
@@ -195,7 +195,7 @@
 ]
 ```
 
-#### 15. Search Posts
+#### 15. Search Posts // 3주차 추가
 게시물을 검색하는 기능을 제공합니다.
 
 - **Endpoint**: `/search`
