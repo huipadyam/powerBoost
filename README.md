@@ -214,6 +214,11 @@
 ]
 ```
 
+### 3주차 DB 캡쳐본
+![Post](https://github.com/huipadyam/powerBoost/blob/chaeeun/images/db_post.png?raw=true)
+![Comment](https://github.com/huipadyam/powerBoost/blob/chaeeun/images/db_comment.png?raw=true)
+![Scrap](https://github.com/huipadyam/powerBoost/blob/chaeeun/images/db_scrap.png?raw=true)
+
 ### 알게 된 점
 #### 1. 비밀번호 해싱
 db 저장 전에 bcrypt로 해싱
