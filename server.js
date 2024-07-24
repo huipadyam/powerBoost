@@ -298,6 +298,52 @@ app.post('/posts/:id/scrap', verifyToken, async (req, res) => {
     }
 });
 
+// 스크랩 취소 엔드포인트
+app.delete('/posts/:id/scrap', verifyToken, async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const scrap = await prisma.scrap.findFirst({
+            where: {
+                postId: parseInt(id),
+                userId: req.userId
+            }
+        });
+
+        if (!scrap) {
+            return res.status(404).send('스크랩을 찾을 수 없습니다');
+        }
+
+        await prisma.scrap.delete({
+            where: { id: scrap.id }
+        });
+        res.status(200).send('스크랩 취소 성공');
+    } catch (err) {
+        console.error('스크랩 취소 오류:', err);
+        res.status(500).send('스크랩 취소 오류');
+    }
+});
+
+// 스크랩한 글 조회 엔드포인트
+app.get('/scraps', verifyToken, async (req, res) => {
+    try {
+        const scraps = await prisma.scrap.findMany({
+            where: {
+                userId: req.userId
+            },
+            include: {
+                post: true
+            }
+        });
+
+        const posts = scraps.map(scrap => scrap.post);
+        res.status(200).json(posts);
+    } catch (err) {
+        console.error('스크랩한 글 조회 오류:', err);
+        res.status(500).send('스크랩한 글 조회 오류');
+    }
+});
+
 // 게시물 검색 기능 엔드포인트
 app.get('/search', async (req, res) => {
     const { query } = req.query;
