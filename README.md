@@ -168,7 +168,34 @@
 - **Headers**: `x-access-token`: `jwt_token`
 - **Response**: 200 OK
 
-#### 13. Search Posts
+#### 13. Unscrap a Post // 3주차 추가
+게시글을 스크랩하는 기능을 제공합니다.
+
+- **Endpoint**: `/posts/:id/scrap`
+- **Method**: `DELETE`
+- **Headers**: `x-access-token`: `jwt_token`
+- **Response**: 200 OK
+
+#### 14. Get Scrapped Posts
+스크랩한 게시글들을 조회하는 기능을 제공합니다.
+
+- **Endpoint**: `/scraps`
+- **Method**: `GET`
+- **Headers**: `x-access-token`: `jwt_token`
+- **Response**:
+```json
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "title": "Post Title",
+    "content": "Post Content",
+    "likes": 0
+  }
+]
+```
+
+#### 15. Search Posts
 게시물을 검색하는 기능을 제공합니다.
 
 - **Endpoint**: `/search`
